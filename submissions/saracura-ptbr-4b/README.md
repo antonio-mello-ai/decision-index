@@ -2,16 +2,20 @@
 
 [felhen-ai/saracura-ptbr-4b](https://huggingface.co/felhen-ai/saracura-ptbr-4b) (Apache-2.0) is a Kev-recipe decision
 model for Brazilian Portuguese: a LoRA adapter and pointer head on `Qwen/Qwen3.5-4B-Base`, initialized from
-`jaredpalmer/kev-4b` and fine-tuned on Portuguese typed decisions with Kev's published trainer. It is served by Kev's
-System One-compatible server and does not generate text.
+`jaredpalmer/kev-4b` (the revision available on 2026-10-03, 34.64 on the 0.2.1 board) and fine-tuned on Portuguese
+typed decisions with Kev's published trainer. It is served by Kev's System One-compatible server and does not
+generate text.
 
 | | |
 |---|---|
-| Decision Index 0.2.1 | **37.91** (Kev 4B on the board: 34.64) |
-| Raw index | 53.25 |
-| Area skill | knowledge 25.0 · language 41.5 · retrieval 46.2 · tools 53.9 · arts 16.0 |
-| Requests | 150,759, all `ok`, none unsupported, no errors |
-| Results | [felhen-ai/decision-index-results](https://huggingface.co/datasets/felhen-ai/decision-index-results/tree/4dfa19e0e63a44103310d54afc660ad381f3867d/runs/saracura-ptbr-4b) (compact, no suite text) |
+| Decision Index 0.3, public index | **37.96** |
+| Raw public index | 53.80 |
+| Area skill | knowledge 25.3 · language 41.9 · retrieval 46.2 · tools 53.9 · arts 14.9 |
+| Requests | 153,397, all `ok`, none unsupported, no errors |
+| Results | [felhen-ai/decision-index-results](https://huggingface.co/datasets/felhen-ai/decision-index-results/tree/a7eebd8bc26e229b24973c3021989ff7e6f125fc/runs/saracura-ptbr-4b) (compact, no suite text) |
+
+The complete 0.2.1 run (37.91, runner `87d4650`) was resumed under 0.3, which ran only the 2,638 rebuilt GSM8K
+requests. Its 0.2.1 scores are kept in `runs/saracura-ptbr-4b/edition-0.2.1/`.
 
 ## Running it
 
@@ -24,7 +28,8 @@ python -m decision_index pipeline --engine http \
 ```
 
 The run was stored full and compacted afterwards (`payload` and `raw_output` dropped, as `--compact` does);
-re-scoring the compact `results.jsonl.gz` gives the same 37.91.
+re-scoring the compact `results.jsonl.gz` gives the same 37.96. Typical latency on one RTX 5090 in bf16 is about
+100 to 170 ms per request for long states.
 
 ## Training data
 
