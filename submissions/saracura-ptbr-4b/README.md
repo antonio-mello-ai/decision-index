@@ -2,8 +2,9 @@
 
 [felhen-ai/saracura-ptbr-4b](https://huggingface.co/felhen-ai/saracura-ptbr-4b) (Apache-2.0) is a Kev-recipe decision
 model for Brazilian Portuguese: a LoRA adapter and pointer head on `Qwen/Qwen3.5-4B-Base`, initialized from
-`jaredpalmer/kev-4b` (the revision available on 2026-10-03, 34.64 on the 0.2.1 board) and fine-tuned on Portuguese
-typed decisions with Kev's published trainer. It is served by Kev's System One-compatible server and does not
+`jaredpalmer/kev-4b` at revision `6cfce5c` (round 10 weights, listed on the 0.3 board as Kev 4B r10, 37.95) and
+fine-tuned on Portuguese typed decisions with Kev's published trainer. The Portuguese fine-tune leaves the public
+index where its starting checkpoint was. It is served by Kev's System One-compatible server and does not
 generate text.
 
 | | |
