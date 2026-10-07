@@ -51,7 +51,7 @@ def cmd_suite(args):
     elif args.suite_command == "import":
         from decision_index.suite.download import from_local
 
-        print(json.dumps(from_local(suite_dir(args, "dir"), args.rows, args.exclusions, args.manifest, verify=not args.no_verify, edition=args.edition, added=args.added_rows), indent=2))
+        print(json.dumps(from_local(suite_dir(args, "dir"), args.rows, args.exclusions, args.manifest, verify=not args.no_verify, edition=args.edition, added=args.added_rows, gsm8k=args.gsm8k_rows), indent=2))
     elif args.suite_command == "sample":
         from decision_index.suite.sample import stratified_sample
 
@@ -143,7 +143,7 @@ def add_edition(p):
 
 def add_suite_args(p):
     add_edition(p)
-    p.add_argument("--suite-dir", help="suite directory (default: suite-0.2 for 0.2 and 0.2.1, suite for 0.1)")
+    p.add_argument("--suite-dir", help="suite directory (default: suite-0.3 for 0.3, suite-0.2 for 0.2 and 0.2.1, suite for 0.1)")
     p.add_argument("--suite-dataset", help="Hub dataset holding your private copy of the suite")
     p.add_argument("--no-verify", action="store_true")
 
@@ -167,7 +167,8 @@ def build_parser():
     add_edition(i)
     i.add_argument("--dir")
     i.add_argument("--rows", required=True)
-    i.add_argument("--added-rows", help="the new-benchmark rows file (0.2 and 0.2.1)")
+    i.add_argument("--added-rows", help="the new-benchmark rows file (0.2, 0.2.1 and 0.3)")
+    i.add_argument("--gsm8k-rows", help="the rebuilt GSM8K rows file (0.3)")
     i.add_argument("--exclusions", help="default: the copy in hub/")
     i.add_argument("--manifest", help="default: the copy in hub/")
     i.add_argument("--no-verify", action="store_true")

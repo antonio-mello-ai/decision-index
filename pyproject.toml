@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "decision-index"
-version = "0.2.1"
+version = "0.3"
 description = "Reproduction kit for the Decision Index benchmark: frozen suite, engines, scorers and index math."
 readme = "README.md"
 license = {file = "LICENSE"}
